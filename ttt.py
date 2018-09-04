@@ -1,18 +1,20 @@
-#################################################
-#...............................................#
-#.......First project ever by teh.f4ll3n........#
-#...........https://github.com/uns3en...........#
-#......A simple game of Tic Tac Toe built.......#
-#.............to run in Windows.................#
-#.............Licence: GNU GPLv2................#
-# ..............................................#
+#	###############################################
+#                                               #
+#       First project ever by teh.f4ll3n 
+#MODIFIED BLYAD BY HIMSELF, DIMKO
+# WORKS ON LINUX! and may be still works on Windows
+#           https://github.com/uns3en           #
+#      A simple game of Tic Tac Toe built       #
+#             to run in Windows.                #
+#             Licence: GNU GPLv2                #
+#                                               #
 #################################################  
 
 
 
 
 #imports
-import os, sys, pygame
+import os
  
 #vars
 global winCond
@@ -20,14 +22,29 @@ winCond = 0
 field = ['1','2','3','4','5','6','7','8','9']
 player = 1
 turn = 0
- 
+
+
+def clean_screen():
+	try:
+		os.system('cls')
+
+	except:
+		print('')
+	try:
+		os.system('clear')
+
+	except:
+		print('')
+
+
+
 #clear screen
-os.system('cls')
+clean_screen()
  
 #initial print
 print('This is a game of Tic Tac Toe.')
 print('You make your move by entering available field number.\n')
- 
+
 #define field draw function
 def draw_field():
 	print( '   |   |   ')
@@ -71,9 +88,9 @@ while winCond == 0:
 			draw_field()
 			print('Turn ' + str(turn + 1))
 			tempVal = int(input ('Player ' + str(player) + ', please enter the field number: '))
-			os.system('cls')
+			clean_screen()
 			if field[tempVal-1] in ['X', 'O']:
-				os.system('cls')
+				clean_screen()
 				print('This is not a valid field\n')
 				continue
 			else:
@@ -98,11 +115,11 @@ while winCond == 0:
 		print('\nKeyboardInterrupt received. Terminated.')
 		break
 	except:
-		os.system('cls')
+		clean_screen()
 		print('Please enter a number between 1 and 9.')
 	finally:
 		if (winCond == 0 and turn == 9):
 			print('Draw. Neither player wins.')
 		elif (winCond == 2):
 			draw_field()
-			print('Player ' + str(player) + ' wins!')
+print('Player ' + str(player) + ' wins!')
